@@ -1,0 +1,9 @@
+result
+result-*
+.direnv/
+*.key
+*.pem
+*.env
+*.age
+.ssh/
+
