@@ -1,0 +1,122 @@
+
+/* ───────── Global ───────── */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Brands", SF Pro Display, Inter, sans-serif;
+  font-size: 13px;
+  border-radius: 10px;
+  padding: 2px 6px;
+  min-height: 0;
+}
+
+/* ───────── Bar ───────── */
+
+window#waybar {
+  background: rgba(255, 255, 255, 0.55);
+  color: #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/* ───────── Tooltip ───────── */
+
+tooltip {
+  background: #000000;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: white;
+}
+
+/* ───────── Left menu styling ───────── */
+
+#custom-launcher,
+#custom-menu_file,
+#custom-menu_edit,
+#custom-menu_view,
+#custom-menu_help,
+#hyprland-window {
+  padding: 2px 8px;
+  transition: background 0.15s ease;
+}
+
+#custom-launcher:hover,
+#custom-menu_file:hover,
+#custom-menu_edit:hover,
+#custom-menu_view:hover,
+#custom-menu_help:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* ───────── Center clock ───────── */
+
+#clock {
+  font-weight: 500;
+}
+
+/* ───────── Right-side modules ───────── */
+
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#backlight,
+#keyboard-state,
+#battery,
+#idle_inhibitor,
+#tray,
+#mpd,
+#cpu image,
+#memory image,
+#temperature image,
+#network image,
+#pulseaudio image,
+#backlight image,
+#keyboard-state image,
+#battery image,
+#idle_inhibitor image,
+#mpd image {
+  margin: 0 2px;       /* space between modules */
+  padding: 2px 8px;    /* inner padding */
+}
+
+#cpu image,
+#memory image,
+#temperature image,
+#network image,
+#pulseaudio image,
+#backlight image,
+#keyboard-state image,
+#battery image,
+#idle_inhibitor image,
+#mpd image {
+  margin-right: 6px;   /* space between icon and text */
+}
+
+/* ───────── Battery states ───────── */
+
+#battery.warning {
+  background: rgba(255, 165, 0, 0.3);
+}
+
+#battery.critical {
+  background: rgba(255, 0, 0, 0.4);
+  animation: blink 0.5s linear infinite alternate;
+}
+
+@keyframes blink {
+  to {
+    background: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* ───────── Tray icons ───────── */
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  background: rgba(255, 0, 0, 0.5);
+}

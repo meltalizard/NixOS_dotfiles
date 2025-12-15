@@ -1,0 +1,156 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "spacing": 6,
+
+    "modules-left": [
+      "custom/launcher",
+      "hyprland/window",
+      "custom/menu_file",
+      "custom/menu_edit",
+      "custom/menu_view",
+      "custom/menu_help"
+    ],
+
+    "modules-center": [
+      "clock"
+    ],
+
+    "modules-right": [
+      "mpd",
+      "idle_inhibitor",
+      "cpu",
+      "memory",
+      "temperature",
+      "network",
+      "pulseaudio",
+      "backlight",
+      "keyboard-state",
+      "battery",
+      "tray"
+    ],
+
+    /* ───────── Left side ───────── */
+
+    "custom/launcher": {
+      "format": "🔍",
+      "tooltip": false,
+      "on-click": "wofi --show drun"
+    },
+
+    "hyprland/window": {
+      "format": "{class}",
+      "max-length": 24,
+      "separate-outputs": true,
+      "rewrite": {
+        "^(?!.*\\S).*": "Finder"
+      }
+    },
+
+    "custom/menu_file": {
+      "format": "File",
+      "tooltip": false,
+      "on-click": "nautilus"
+    },
+
+    "custom/menu_edit": {
+      "format": "Edit",
+      "tooltip": false
+    },
+
+    "custom/menu_view": {
+      "format": "View",
+      "tooltip": false
+    },
+
+    "custom/menu_help": {
+      "format": "Help",
+      "tooltip": false,
+      "on-click": "gio open https://github.com/kamlendras/waybar/issues/new"
+    },
+
+    /* ───────── Center ───────── */
+
+    "clock": {
+      "format": "{:%a %b %d  %H:%M}",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    /* ───────── Right side ───────── */
+
+    "cpu": {
+      "format": " {usage}%"
+    },
+
+    "memory": {
+      "format": " {used:0.1f}G"
+    },
+
+    "temperature": {
+      "critical-threshold": 80,
+      "format": "{icon} {temperatureC}°C",
+      "format-icons": ["", "", ""]
+    },
+
+    "network": {
+      "format-wifi": " {signalStrength}%",
+      "format-ethernet": "",
+      "format-disconnected": "⚠"
+    },
+
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "",
+      "format-icons": {
+        "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
+    },
+
+    "backlight": {
+      "format": " {percent}%"
+    },
+
+    "keyboard-state": {
+      "capslock": true,
+      "numlock": true,
+      "format": "{icon}",
+      "format-icons": {
+        "locked": "",
+        "unlocked": ""
+      }
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": " {capacity}%",
+      "format-plugged": " {capacity}%",
+      "format-icons": ["", "", "", "", ""]
+    },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+
+    "tray": {
+      "spacing": 8
+    },
+
+    "mpd": {
+      "format": " {title}",
+      "format-stopped": "",
+      "on-click": "mpc toggle"
+    }
+  }
+]
+
