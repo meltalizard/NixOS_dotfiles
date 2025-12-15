@@ -134,6 +134,12 @@
   wl-clipboard
   neovim
   kdePackages.dolphin
+  # For Folders
+  xfce.thunar
+  xfce.tumbler
+  ffmpegthumbnailer
+
+
   obsidian
   vscode
 
