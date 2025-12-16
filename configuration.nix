@@ -129,6 +129,10 @@
   waybar
   wofi
   hyprpaper
+  brightnessctl
+
+  # For Screenshot
+  grim slurp
   
   # For Terminal
   vim
@@ -155,6 +159,9 @@
   python315
   
 
+
+  # Network
+  nmap
 
   # Browsers
   firefox brave qutebrowser
