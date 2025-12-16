@@ -129,11 +129,15 @@
   waybar
   wofi
   hyprpaper
+  
+  # For Terminal
   vim
   kitty
+  starship
   wl-clipboard
   neovim
-  kdePackages.dolphin
+  neofetch
+
   # For Folders
   xfce.thunar
   xfce.tumbler
@@ -162,6 +166,7 @@
   ranger
   libnotify
   discord
+  htop
 
   ];
 
