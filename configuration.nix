@@ -23,6 +23,13 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  
+
+  
+
+
+
+
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
@@ -86,7 +93,6 @@
     #  thunderbird
     ];
   };
-
   # Install firefox.
   programs.firefox.enable = true;
   
@@ -116,12 +122,21 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Bluetooth
+    hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
+  services.blueman.enable = true;
+
   #Fonts
   fonts.packages = with pkgs; [
   nerd-fonts.jetbrains-mono
   nerd-fonts.fira-code
   font-awesome
   ];
+
+  
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -130,6 +145,7 @@
   wofi
   hyprpaper
   brightnessctl
+  nwg-displays
 
   # For Screenshot
   grim slurp
@@ -157,11 +173,16 @@
   cmake
   flutter dart
   python315
+  jq
   
 
 
   # Network
+  networkmanagerapplet
   nmap
+
+  # Bluetooth
+  blueman
 
   # Browsers
   firefox brave qutebrowser
@@ -171,9 +192,17 @@
   imv
   zip
   ranger
-  libnotify
+ 
   discord
   htop
+  qbittorrent
+  zathura
+  upower
+
+  # Notifcation
+  libnotify
+  mako
+
 
   ];
 
