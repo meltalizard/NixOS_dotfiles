@@ -9,6 +9,7 @@
   ".config/hypr".source = ./hypr;
   ".config/kitty".source = ./kitty;
   ".config/yazi".source = ./yazi;
+  ".config/nvim".source = ./nvim;
   };
 
   programs.home-manager.enable = true;
