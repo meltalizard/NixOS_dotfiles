@@ -26,6 +26,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
@@ -61,17 +62,18 @@
   # system services
   services.dbus.enable = true;
   security.polkit.enable = true;
+  services.udisks2.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.meltalizard = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" "audio" ];
   };
 
   # Allow unfree packages
@@ -83,6 +85,8 @@
   neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   git
   kitty
+  udiskie
+  udisks
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
