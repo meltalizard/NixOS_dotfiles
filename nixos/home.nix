@@ -8,6 +8,7 @@
   home.file = {
   ".config/hypr".source = ./hypr;
   ".config/kitty".source = ./kitty;
+  ".config/yazi".source = ./yazi;
   };
 
   programs.home-manager.enable = true;
@@ -60,6 +61,7 @@
 
   xfce.thunar
   xfce.tumbler
+  xdg-utils
   ffmpegthumbnailer
   imv
   wl-clipboard
