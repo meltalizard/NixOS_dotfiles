@@ -4,13 +4,17 @@
   home.homeDirectory = "/home/meltalizard";
   home.stateVersion = "25.11";
   
+  xdg.enable = true;
   home.file = {
   ".config/hypr".source = ./hypr;
   ".config/yazi".source = ./yazi;
-  ".config/nvim".source = ./nvim;
   ".config/waybar".source = ./waybar;
   };
   
+  xdg.configFile."waybar/style.css" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/waybar-style.css";
+  };
+
   home.sessionVariables = {
     CHROME_EXECUTABLE = "${pkgs.brave}/bin/brave";
   };
@@ -52,8 +56,14 @@
     # For Development
     flutter
     python3
+    pyright
     clang
+    clang-tools
     vscode
+    lua-language-server
+    ripgrep
+
+
     # Browsers
     firefox
     brave

@@ -14,5 +14,8 @@ splash = false
 EOF
 
   wal -i "$WALLPAPER" -n
+  ln -sf ~/.cache/wal/colors-wofi.css ~/.config/wofi/style.css
+  ln -sf ~/.cache/wal/colors-waybar.css ~/.config/waybar/style.css
   pkill -USR1 kitty
+  pkill -SIGUSR2 waybar
 fi

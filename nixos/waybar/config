@@ -4,7 +4,7 @@
     "height": 24,
     "modules-left": ["hyprland/workspaces", "hyprland/mode"],
     "modules-center": [],
-    "modules-right": ["network", "cpu", "memory", "pulseaudio", "battery", "clock"],
+    "modules-right": ["tray", "network", "cpu", "memory", "pulseaudio", "battery", "clock"],
     
     "hyprland/workspaces": {
         "format": "{name}",

@@ -12,7 +12,10 @@ video = [
   { run = 'vlc "$@"', orphan = true, for = "unix" },
 ]
 pdf = [
-  { run = 'xdg-open "$@"', orphan = true, for = "linux" },
+  { run = 'zathura "$@"', orphan = true, for = "unix" },
+]
+epub = [
+  { run = 'zathura "$@"', orphan = true, for = "unix" },
 ]
 
 [open]
@@ -21,4 +24,5 @@ rules = [
   { mime = "image/*", use = "image" },
   { mime = "video/*", use = "video" },
   { mime = "application/pdf", use = "pdf" },
+  { mime = "application/epub+zip", use = "epub" },
 ]

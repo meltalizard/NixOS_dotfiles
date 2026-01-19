@@ -1,4 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
+# Show full directory path
 
 [aws]
 symbol = " "
@@ -32,6 +33,9 @@ symbol = " "
 
 [directory]
 read_only = " 󰌾"
+truncation_length = 0  # 0 = show full path, default is 3
+truncate_to_repo = false  # Don't truncate to git repo root
+
 
 [docker_context]
 symbol = " "
