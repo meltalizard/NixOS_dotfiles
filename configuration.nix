@@ -56,9 +56,26 @@
 services.tlp = {
   enable = true;
   settings = {
-   # Optional: helps save long-term battery health
-    START_CHARGE_THRESH_BAT0 = 40; # Start charging at 40%
-    STOP_CHARGE_THRESH_BAT0 = 95;  # Stop charging at 80%
+    # Battery health thresholds (BAT1 only - BAT0 is dead)
+    START_CHARGE_THRESH_BAT1 = 40;
+    STOP_CHARGE_THRESH_BAT1 = 90;
+
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    CPU_BOOST_ON_AC = 1;
+    CPU_BOOST_ON_BAT = 0;
+    WIFI_PWR_ON_AC = "off";
+    WIFI_PWR_ON_BAT = "on";
+
+    # Reduce disk wear on battery
+    DISK_APM_LEVEL_ON_BAT = 128;
+
+    # USB autosuspend for extra power savings
+    USB_AUTOSUSPEND = 1;
+
+    # Platform power profiles (works well on ThinkPads)
+    PLATFORM_PROFILE_ON_AC = "performance";
+    PLATFORM_PROFILE_ON_BAT = "low-power";
   };
 };
 

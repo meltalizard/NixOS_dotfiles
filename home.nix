@@ -87,6 +87,7 @@
     # Browsers
     firefox
     brave
+    google-chrome
     discord
     obsidian
     vlc
