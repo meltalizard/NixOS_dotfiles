@@ -1,197 +1,224 @@
+/* colors defined at top for easy configuring */
+@define-color background #2C2A24;
+@define-color second-background #3A372F;
+@define-color text #DDD5C4;
+@define-color borders #A0907A;
+@define-color focused #b5b38d;
+@define-color focused2 #BFAA80;
+@define-color color1 #7699A3;
+@define-color color2 #8D7AAE;
+@define-color color3 #78997A;
+@define-color urgent #B05A5A;
+
+
+/* font declared */
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: sans;
-  /*font-family: "D2CodingLigature Nerd Mono";*/
-  font-size: 13px;
-  min-height: 0;
+  font-family: "DepartureMono Nerd Font Mono";
+  font-size: 15px; /* normal default size */
 }
 
+
+/* ===== ICON SIZE ONLY ===== */
+/* enlarge ONLY icon-only modules (NOT wireplumber) */
+#custom-nixos,
+#custom-clipboard,
+#custom-bluetooth,
+#idle_inhibitor,
+#network,
+#backlight {
+  font-size: 20px;
+}
+
+/* workspace icons */
+#workspaces button {
+  font-size: 19px;
+}
+
+
+/* brackets spacing */
+#custom-openbracket,
+#custom-closebracket {
+  margin: 0 5px;
+}
+
+
+/* waybar window */
 window#waybar {
-  background: transparent;
-  /*    background-color: rgba(43, 48, 59, 0.5); */
-  /*    border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-  color: #ffffff;
-  transition-property: background-color;
-  transition-duration: .5s;
+  background-color: transparent;
+  border-bottom: 0;
+  color: @text;
+  transition: background-color 0.5s;
 }
 
 window#waybar.hidden {
   opacity: 0.2;
 }
 
-#waybar.empty #window {
+window#waybar.empty #window {
   background-color: transparent;
 }
 
-#workspaces {
+
+/* configuring the modules */
+.modules-left {
+  margin: 4px 0 4px 6px;
+  padding: 0 0 0 7px;
+  background-color: @background;
+  border: 2px solid @focused;
 }
 
-#window {
-  margin: 2;
-  padding-left: 8;
-  padding-right: 8;
-  background-color: rgba(0,0,0,0.3);
-  font-size:14px;
-  font-weight: bold;
+.modules-center {
+  margin: 4px 0 4px 6px; 
+  padding: 0 10px 0 10px;
+  background-color: @background;
+  border: 2px solid @focused;
 }
 
+.modules-right {
+  margin: 4px 0 4px 6px;
+  padding: 0 10px 0 10px;
+  background-color: @background;
+  border: 2px solid @focused;
+}
+
+
+/* buttons */
 button {
-  /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each button name */
   border: none;
+}
+
+
+/* left island */
+
+/* menu panel */
+#custom-nixos,
+#custom-powerprofile {
+  padding: 0 6px;
+}
+
+#custom-nixos:hover {
+  color: @color1;
+}
+
+#custom-powerprofile:hover {
+  color: @color1;
+}
+
+
+/* workspace panel */
+#workspaces button {
+  min-width: 0;
+  padding: 0 8px 0 8px;
+  background-color: transparent;
+  color: @text;
   border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-  background: inherit;
-  border-top: 2px solid #c9545d;
-}
-
-#workspaces button {
-  padding: 0 4px;
-  /*    background-color: rgba(0,0,0,0.3); */
-}
-
 #workspaces button:hover {
-}
-
-#workspaces button.focused {
-  /*    box-shadow: inset 0 -2px #c9545d; */
-  background-color: rgba(0,0,0,0.3);
-  color:#c9545d;
-  border-top: 2px solid #c9545d;
+  background-color: @second-background;
 }
 
 #workspaces button.active {
-  /*    box-shadow: inset 0 -2px #c9545d; */
-  background-color: rgba(0,0,0,0.3);
-  color:#c9545d;
-  border-top: 2px solid #c9545d;
+  color: @focused2;
+  background-color: @second-background;
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: @urgent;
 }
 
-#mode {
-  background-color: #64727D;
-  border-bottom: 3px solid #ffffff;
+
+/* spacing fixes */
+.modules-left>widget:first-child>#workspaces {
+  margin-left: 0;
 }
 
+.modules-right>widget:last-child>#workspaces {
+  margin-right: 0;
+}
+
+
+/* media player */
+#mpris {
+  margin: 0 0 0 5px;
+  padding: 0 9px;
+  background-color: @background;
+  color: @text;
+}
+
+#mpris.playing {
+  background-color: @color3;
+  border-radius: 2px;
+  color: @background;
+}
+
+
+/* center module  */
+#window {
+  padding: 0 5px;
+}
+
+
+/* Right Island */
+
+/* module general styles */
 #clock,
 #battery,
 #cpu,
 #memory,
-#disk,
-#temperature,
+#custom-clipboard,
+#custom-bluetooth,
+#network {
+  padding: 0 10px;
+}
+
+#clock:hover,
+#battery:hover,
+#custom-cpu:hover,
+#custom-clipboard:hover,
+#custom-bluetooth:hover,
+#network:hover,
+#idle_inhibitor:hover,
+#backlight:hover,
+#wireplumber:hover {
+  color: @color1;
+}
+
+#idle_inhibitor {
+  padding: 0 10px 0 0;
+}
+
+#custom-powerprofile {
+  padding: 0 8px 0 4px;
+}
+
+
+/* Remaining Modules */
 #backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-  margin: 2px;
-  padding-left: 4px;
-  padding-right: 4px;
-  background-color: rgba(0,0,0,0.3);
-  color: #ffffff;
+#wireplumber {
+  padding: 0 5px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
+#wireplumber.muted {
+  background-color: @color2;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
+
+#battery.charging,
+#battery.plugged {
+  background-color: @focused2;
+  color: @background;
 }
 
-#clock {
-  font-size:14px;
-  font-weight: bold;
-}
-
-#battery icon {
-  color: red;
-}
-
-#battery.charging, #battery.plugged {
-  color: #ffffff;
-  background-color: #26A65B;
+#battery.critical:not(.charging) {
+  background-color: @urgent;
+  color: @text;
+  animation: blink 0.5s steps(12) infinite alternate;
 }
 
 @keyframes blink {
   to {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: @second-background;
+    color: @text;
   }
 }
-
-#battery.warning:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-label:focus {
-  background-color: #000000;
-}
-
-#network.disconnected {
-  background-color: #f53c3c;
-}
-
-#temperature.critical {
-  background-color: #eb4d4b;
-}
-
-#idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
-}
-
-/* #tray > .passive { */
-/*   -gtk-icon-effect: dim; */
-/* } */
-/**/
-/* #tray > .needs-attention { */
-/*   -gtk-icon-effect: highlight; */
-/*   background-color: #eb4d4b; */
-/* } */
-/**/
-/*
-
-window#waybar.solo {
-background-color: #FFFFFF;
-}
-
-window#waybar.termite {
-background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-background-color: #000000;
-border: none;
-}
- */
