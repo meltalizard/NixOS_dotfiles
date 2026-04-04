@@ -5,18 +5,14 @@
   home.stateVersion = "25.11";
   
   xdg.enable = true;
+
   home.file = {
-  ".config/hypr".source = ./hypr;
   ".config/yazi".source = ./yazi;
-  ".config/waybar".source = ./waybar;
   };
   
-  xdg.configFile."waybar/style.css" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.local/share/waybar-style.css";
-  };
-
   home.sessionVariables = {
     CHROME_EXECUTABLE = "${pkgs.brave}/bin/brave";
+    SUDO_EDITOR = "nvim -n";
   };
 
   home.sessionPath = [
@@ -34,11 +30,21 @@
   };
   
   programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-    settings = builtins.fromTOML (builtins.readFile ./starship.toml);
+  enable = true;
+  enableBashIntegration = true;
   };
-  
+
+  home.pointerCursor = {
+  name = "Skyrim";
+  package = pkgs.runCommand "Skyrim-cursor" {} ''
+    mkdir -p $out/share/icons
+    cp -r ${./cursors/Skyrim} $out/share/icons/Skyrim
+  '';
+  size = 24;
+  gtk.enable = true;
+  x11.enable = true;
+  };
+    
   programs.kitty = {
     enable = true;
     font = {
@@ -68,17 +74,24 @@
     vscode
     lua-language-server
     ripgrep
+    rpi-imager
+    docker
+
+    # For B
+    nodejs_24
+    jdk21_headless
+    android-tools
+    watchman
+    android-studio
+    libnotify
 
     # Applications
     kicad
     arduino-ide
     gimp
     obs-studio
-    
 
     # Keyring
-    gnome-keyring
-    libsecret
 
     # LibreOffice
     libreoffice-qt
@@ -94,16 +107,16 @@
     btop
     zathura
     qbittorrent
-    # Screenshot
+    # Image/Screenshot
     grim
     slurp
     # Ricing
+    waybar
     yazi
     brightnessctl
     zip
     fastfetch
     waypaper
-    waybar
     wofi
     pywal
     hyprpaper
@@ -114,6 +127,8 @@
     ffmpegthumbnailer
     imv
     wl-clipboard
+    impala
+    swaynotificationcenter
     # Bluetooth 
     bluez
     blueman

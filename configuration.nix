@@ -106,16 +106,6 @@ hardware.enableAllFirmware = true;
     layout = "us";
     variant = "";
   };
-  
-  
-  services.gnome.gnome-keyring.enable = true;
-
-  security.pam.services.login.enableGnomeKeyring = true;
-  security.pam.services.sddm.enableGnomeKeyring = true; # if you use SDDM
-  security.pam.services.greetd.enableGnomeKeyring = true; # if using greetd
-  
-
-
 
   programs.adb.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
