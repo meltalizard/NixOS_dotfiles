@@ -18,7 +18,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
   
-
   # Set your time zone.
   time.timeZone = "Asia/Manila";
   # Select internationalisation properties.
@@ -60,9 +59,9 @@ services.tlp = {
     START_CHARGE_THRESH_BAT1 = 40;
     STOP_CHARGE_THRESH_BAT1 = 90;
 
-    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    CPU_BOOST_ON_AC = 1;
+    CPU_BOOST_ON_AC = 0;
     CPU_BOOST_ON_BAT = 0;
     WIFI_PWR_ON_AC = "off";
     WIFI_PWR_ON_BAT = "on";
@@ -74,7 +73,7 @@ services.tlp = {
     USB_AUTOSUSPEND = 1;
 
     # Platform power profiles (works well on ThinkPads)
-    PLATFORM_PROFILE_ON_AC = "performance";
+    PLATFORM_PROFILE_ON_AC = "balanced";
     PLATFORM_PROFILE_ON_BAT = "low-power";
   };
 };
@@ -109,9 +108,14 @@ hardware.enableAllFirmware = true;
 
   programs.adb.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+
+  # For Docker
+  virtualisation.docker.enable = true;
+
   users.users.meltalizard = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" "audio" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" "input" 
+    "audio" "adbusers" "video" "docker"];
   };
 
   # Allow unfree packages
