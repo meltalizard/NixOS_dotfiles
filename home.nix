@@ -1,15 +1,12 @@
 { config, pkgs, ... }:
 {
+
   home.username = "meltalizard";
   home.homeDirectory = "/home/meltalizard";
   home.stateVersion = "25.11";
   
   xdg.enable = true;
 
-  home.file = {
-  ".config/yazi".source = ./yazi;
-  };
-  
   home.sessionVariables = {
     CHROME_EXECUTABLE = "${pkgs.brave}/bin/brave";
     SUDO_EDITOR = "nvim -n";
@@ -18,7 +15,6 @@
   home.sessionPath = [
     "$HOME/.pub-cache/bin"
   ];
-  
 
   programs.home-manager.enable = true;
   
@@ -28,6 +24,8 @@
       export CHROME_EXECUTABLE="$(which brave)"
     '';
   };
+
+  services.swaync.enable = true;
   
   programs.starship = {
   enable = true;
@@ -62,81 +60,5 @@
   };
   
   fonts.fontconfig.enable = true;
-  
-  home.packages = with pkgs; [
-    # For Development
-    flutter
-    firebase-tools
-    python3
-    pyright
-    clang
-    clang-tools
-    vscode
-    lua-language-server
-    ripgrep
-    rpi-imager
-    docker
-
-    # For B
-    nodejs_24
-    jdk21_headless
-    android-tools
-    watchman
-    android-studio
-    libnotify
-
-    # Applications
-    kicad
-    arduino-ide
-    gimp
-    obs-studio
-
-    # Keyring
-
-    # LibreOffice
-    libreoffice-qt
-    hunspell
-
-    # Browsers
-    firefox
-    brave
-    google-chrome
-    discord
-    obsidian
-    vlc
-    btop
-    zathura
-    qbittorrent
-    # Image/Screenshot
-    grim
-    slurp
-    # Ricing
-    waybar
-    yazi
-    brightnessctl
-    zip
-    fastfetch
-    waypaper
-    wofi
-    pywal
-    hyprpaper
-    wlogout
-    xfce.thunar
-    xfce.tumbler
-    xdg-utils
-    ffmpegthumbnailer
-    imv
-    wl-clipboard
-    impala
-    swaynotificationcenter
-    # Bluetooth 
-    bluez
-    blueman
-    # Fonts
-    font-awesome
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only
-    monaspace
-    nerd-fonts.departure-mono
-  ];
+  # WHEN ABOUT TO INSTALL ON NEW DEVICE, PICK OUT WHAT YOU ONLY NEED 
 }
