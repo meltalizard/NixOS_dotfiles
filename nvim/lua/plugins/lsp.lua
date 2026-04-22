@@ -2,16 +2,28 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- Set up capabilities with snippet support
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      
-      -- Modern way - direct vim.lsp setup
-      vim.lsp.config('pyright', {})
-      vim.lsp.config('clangd', {})
-      vim.lsp.config('lua_ls', {})
-      vim.lsp.config('dartls', {
-        cmd = { "dart", "language-server", "--protocol=lsp"},
+
+      -- Python
+      vim.lsp.config("pyright", {})
+      vim.lsp.enable("pyright")
+
+      -- C/C++
+      vim.lsp.config("clangd", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("clangd")
+
+      -- Lua
+      vim.lsp.config("lua_ls", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("lua_ls")
+
+      -- Dart / Flutter
+      vim.lsp.config("dartls", {
+        cmd = { "dart", "language-server", "--protocol=lsp" },
         filetypes = { "dart" },
         root_markers = { "pubspec.yaml" },
         capabilities = capabilities,
@@ -19,7 +31,7 @@ return {
           dart = {
             completeFunctionCalls = true,
             showTodos = true,
-          }
+          },
         },
         init_options = {
           onlyAnalyzeProjectsWithOpenFiles = false,
@@ -29,17 +41,21 @@ return {
           flutterOutline = true,
         },
       })
-      
-      -- Enable them
-      vim.lsp.enable('pyright')
-      vim.lsp.enable('clangd')
-      vim.lsp.enable('lua_ls')
-      vim.lsp.enable('dartls')
+      vim.lsp.enable("dartls")
+
+      -- HTML
+      vim.lsp.config("html", {
+        capabilities = capabilities,
+        filetypes = { "html", "htmldjango" },
+      })
+      vim.lsp.enable("html")
+
+      -- CSS / SCSS / Less
+      vim.lsp.config("cssls", {
+        capabilities = capabilities,
+        filetypes = { "css", "scss", "less" },
+      })
+      vim.lsp.enable("cssls")
     end,
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {},
   },
 }
