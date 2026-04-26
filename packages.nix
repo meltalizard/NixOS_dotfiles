@@ -1,4 +1,15 @@
 {pkgs, ...}:
+let
+  androidComposition = pkgs.androidenv.composeAndroidPackages {
+    cmdLineToolsVersion = "13.0";
+    platformToolsVersion = "35.0.2";
+    buildToolsVersions = [ "34.0.0" ];
+    platformVersions = [ "34" ];
+    includeEmulator = false;
+    includeSources = false;
+    includeSystemImages = false;
+  };
+in
 {
   home.packages = with pkgs; [
 
@@ -6,6 +17,7 @@
     (python3.withPackages (ps: with ps; [
       opencv4
     ]))
+    mpremote
     flutter
     firebase-tools
     pyright
@@ -17,18 +29,23 @@
     rpi-imager
     docker
     supabase-cli
+    androidComposition.androidsdk
+    usbutils
+    pyright
 
     # For B
     nodejs_24
-    jdk21_headless
+    jdk17
     android-tools
     watchman
     android-studio
     libnotify
 
-    # Networking
+    # Tools
     nmap
     wireshark
+    speedtest-cli
+    lm_sensors
 
     # Applications
     kicad
@@ -75,6 +92,7 @@
     wl-clipboard
     swaynotificationcenter
     hyprlock
+    hypridle
     gvfs
 
     #LARPMAXXING

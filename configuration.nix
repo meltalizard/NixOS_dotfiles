@@ -13,6 +13,8 @@
   
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.powersave = false; 
+  networking.nameservers = ["1.1.1.1" "8.8.8.8"];
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # Set your time zone.
@@ -50,14 +52,16 @@
     settings = {
       START_CHARGE_THRESH_BAT1 = 50;
       STOP_CHARGE_THRESH_BAT1 = 90;
-      CPU_SCALING_GOVERNOR_ON_AC = "schedutil";
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_BOOST_ON_AC = 0;
+      CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;
       WIFI_PWR_ON_AC = "off";
       WIFI_PWR_ON_BAT = "on";
       DISK_APM_LEVEL_ON_BAT = 128;
-      USB_AUTOSUSPEND = 1;
+      USB_AUTOSUSPEND = 0;
+      RUNTIME_PM_ON_BAT = "auto";
+      RUNTIME_PM_ON_AC = "on";
       PLATFORM_PROFILE_ON_AC = "balanced";
       PLATFORM_PROFILE_ON_BAT = "low-power";
     };
@@ -85,11 +89,16 @@
     layout = "us";
     variant = "";
   };
+
+  services.udev.extraRules = ''
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", MODE="0660", GROUP="dialout"
+'';
+
   programs.adb.enable = true;
     users.users.meltalizard = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "plugdev" "input" 
-    "audio" "adbusers" "video" ];
+    "audio" "adbusers" "dialout" "video" ];
   };
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
