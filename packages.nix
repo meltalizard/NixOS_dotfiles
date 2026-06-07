@@ -32,6 +32,9 @@ in
     androidComposition.androidsdk
     usbutils
     pyright
+    nh
+
+    localsend
 
     # For B
     nodejs_24

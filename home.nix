@@ -18,15 +18,6 @@
 
   programs.home-manager.enable = true;
   
-  programs.bash = {
-    enable = true;
-    bashrcExtra = ''
-      export CHROME_EXECUTABLE="$(which brave)"
-    '';
-  };
-
-  services.swaync.enable = true;
-  
   programs.starship = {
   enable = true;
   enableBashIntegration = true;
@@ -50,7 +41,7 @@
       size = 12.0;
     };
     settings = {
-      background_opacity = "0.55";
+      background_opacity = "0.75";
       cursor_shape = "block";
       cursor_blink_interval = 0;
     };
@@ -60,5 +51,4 @@
   };
   
   fonts.fontconfig.enable = true;
-  # WHEN ABOUT TO INSTALL ON NEW DEVICE, PICK OUT WHAT YOU ONLY NEED 
 }

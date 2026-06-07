@@ -10,12 +10,20 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "nixos";
+  environment.sessionVariables.NH_FLAKE = "/etc/nixos";
   
   # Enable networking
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.powersave = false; 
   networking.nameservers = ["1.1.1.1" "8.8.8.8"];
   systemd.services.NetworkManager-wait-online.enable = false;
+
+  nix.gc = {
+  automatic = true;
+  dates = "weekly";
+  options = "--delete-older-than 14d";
+  };
+  nix.optimise.automatic = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Manila";
@@ -90,6 +98,7 @@
     variant = "";
   };
 
+  
   services.udev.extraRules = ''
   SUBSYSTEM=="usb", ATTRS{idVendor}=="2e8a", MODE="0660", GROUP="dialout"
 '';

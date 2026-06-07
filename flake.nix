@@ -1,6 +1,5 @@
-{
+  {
   description = "meltalizard's NixOS configuration";
-
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     # ↑ removed the pkgs = import nixpkgs { ... } block that was here
@@ -28,6 +27,7 @@
                 ./home.nix
                 ./packages.nix
                 ./android.nix
+                ./shell.nix
               ];
             };
           }
